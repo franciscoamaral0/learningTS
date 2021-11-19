@@ -7,6 +7,7 @@
   <title>TypeScript</title>
 </head>
 <body>
+  <script src="./node_modules/systemjs/dist/system.js"></script>
   <!-- <script src="introduction/basic.js"></script>
   <script src="types/types.js"></script>
   <script src="compilador/compilador.js"></script>
@@ -14,9 +15,20 @@
   <script src="/primeiroDesafio/primeiroDesafio.js"></script> -->
   <!-- <script src="/classes/classes.js"></script> -->
   <!-- <script src="/classes/desafio.js"></script> -->
-  <script src="/namespaces/geomatriaCirc.js"></script>
+  <!-- <script src="/namespaces/geomatriaCirc.js"></script>
   <script src="/namespaces/geometriaRect.js"></script>
-  <script src="/namespaces/namespaces.js"></script>
+  <script src="/namespaces/namespaces.js"></script> -->
+  <!-- <script src="/modulos/modulo.js"></script> -->
   <!-- <script src="/desafios/desafioClasses.js"></script> -->
+  <script>
+    SystemJS.config({
+      baseUrl: './modulos',
+      packages:{
+        defaultJSExtension: true,
+      }
+    })
+
+    SystemJS.import('./modulos/modulo.js')
+  </script>
 </body>
 </html>
