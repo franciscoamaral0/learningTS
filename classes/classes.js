@@ -1,11 +1,18 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Data = void 0;
 class Data {
     constructor(dia = 1, mes = 1, ano = 1970) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
     }
 }
+exports.Data = Data;
+// Publico por padrao, pode ser definido como static ou private
 Data.nome = "Francisco";
 const aniversario = new Data(3, 1, 1991);
 aniversario.dia = 4;

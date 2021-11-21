@@ -31,7 +31,7 @@ saudarComOla(client);
 client.saudar('Solo');
 let potencia;
 potencia = function (base, exp) {
-    return Math.pow(base, exp);
+    return base ** exp;
 };
 console.log(potencia(3, 10));
 class RealA {

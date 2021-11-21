@@ -1,13 +1,11 @@
 class Data {
 
   // Publico por padrao, pode ser definido como static ou private
-  dia: number
-  mes: number
-  ano: number
+  
   static nome: String = "Francisco"
 
 
-  constructor(dia: number = 1, mes: number = 1, ano: number = 1970){
+  constructor(public dia: number = 1,public mes: number = 1, public ano: number = 1970){
     this.dia = dia
     this.mes = mes
     this.ano = ano
@@ -197,3 +195,5 @@ class Aviao {
 
 const turboHelice = new Aviao("A320", "PT-ABC")
 console.log(turboHelice)
+
+export {Data}
