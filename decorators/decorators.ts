@@ -70,19 +70,20 @@ function perfilAdmin<T extends Constructor>(constructor : T){
 }
 
 class ContaCorrente {
+  // @naoNegativo
   private saldo: number
 
   constructor(saldo: number){
     this.saldo = saldo
   }
 @congelar
-  sacar(valor: number){
-    if(valor <= this.saldo){
+  sacar( @paramInfo valor: number){
+    // if(valor <= this.saldo){
       this.saldo -= valor
       return true
-    } else{
-      return false
-    }
+    // } else{
+    //   return false
+    // }
   }
   @congelar
   getSaldoo(){
@@ -93,16 +94,45 @@ class ContaCorrente {
 
 const cc = new ContaCorrente(20000)
 cc.sacar(4000)
+cc.sacar(20000)
 
 
-cc.getSaldoo = function(){
-  return this['saldo'] + 7000
-}
+// cc.getSaldoo = function(){
+//   return this['saldo'] + 7000
+// }
 
 console.log(cc.getSaldoo())
 
-function congelar(alvo: any, method: any, descritor: PropertyDescriptor){
+function congelar(alvo: any, metodo: any, descritor: PropertyDescriptor){
   console.log(alvo)
-  console.log(method)
+  console.log(metodo)
   descritor.writable = false
 }
+
+
+// Decorator atributo
+function naoNegativo(alvo: any, nomePropriedade: string){
+  delete alvo[nomePropriedade]
+  Object.defineProperty(alvo, nomePropriedade, {
+    get: function(): any {
+      return alvo["_" + nomePropriedade]
+    },
+    set: function(valor:any):void {
+      if(valor < 0){
+        throw new Error('Saldo Invalido')
+      }else {
+        alvo['_' + nomePropriedade] = valor
+      }
+      
+    }
+  })
+}
+
+// Decorator Parametro Metodo
+
+function paramInfo(alvo:any, nomeDoMetodo: string,
+  indiceParam:number){
+    console.log(`Alvo ${alvo}`)
+    console.log(`Nome do Metodo ${nomeDoMetodo}`)
+    console.log(`Indice do parametro ${indiceParam}`)
+  }
