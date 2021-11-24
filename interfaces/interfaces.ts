@@ -69,10 +69,12 @@ interface B {
 
 interface ABC extends A,B{
   c():void
+
 }
 
 class RealA implements A{
   a():void{}
+  
   
 }
 
